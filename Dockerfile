@@ -1,4 +1,4 @@
-FROM sdhibit/rpi-raspbian
+FROM raspbian/jessie
 MAINTAINER MonX <https://github.com/MonXBZH/>
 
 # Let the container know that there is no tty
@@ -7,7 +7,7 @@ ENV SUBSONIC_VERSION 6.1.5
 
 RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
  apt-get update && \
- apt-get install --no-install-recommends -qy wget ffmpeg lame locales && \
+ apt-get install -y wget libav-tools lame locales && \
  apt-get clean
 
 #Download & Install Java 8 arm hard float from Oracle
