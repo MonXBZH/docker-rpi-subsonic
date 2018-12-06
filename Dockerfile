@@ -1,8 +1,9 @@
 FROM sdhibit/rpi-raspbian
-MAINTAINER Steve Hibit <sdhibit@gmail.com>
+MAINTAINER Steve Hibit <https://github.com/MonXBZH/>
 
 # Let the container know that there is no tty
 ENV DEBIAN_FRONTEND noninteractive
+ENV SUBSONIC_VERSION 6.1.5
 
 RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
  apt-get update && \
@@ -33,9 +34,9 @@ RUN useradd --home /var/subsonic -M -K UID_MIN=10000 -K GID_MIN=10000 -U subsoni
  chmod +x /usr/share/subsonic/startup.sh
 
 #Download & Install Subsonic Standalone
-RUN wget -P /tmp/ "http://sourceforge.net/projects/subsonic/files/subsonic/5.0/subsonic-5.0-standalone.tar.gz" && \
- tar zxvf /tmp/subsonic-5.0-standalone.tar.gz -C /usr/share/subsonic && \
- rm -rf /tmp/subsonic-5.0-standalone.tar.gz
+RUN wget -P /tmp/ "https://s3-eu-west-1.amazonaws.com/subsonic-public/download/subsonic-$SUBSONIC_VERSION-standalone.tar.gz" && \
+ tar zxvf /tmp/subsonic-$SUBSONIC_VERSION-standalone.tar.gz -C /usr/share/subsonic && \
+ rm -rf /tmp/subsonic-$SUBSONIC_VERSION-standalone.tar.gz
 
 #Subsonic Web Port
 EXPOSE 4040
