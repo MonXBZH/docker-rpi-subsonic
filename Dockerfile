@@ -1,5 +1,5 @@
 FROM sdhibit/rpi-raspbian
-MAINTAINER Steve Hibit <https://github.com/MonXBZH/>
+MAINTAINER MonX <https://github.com/MonXBZH/>
 
 # Let the container know that there is no tty
 ENV DEBIAN_FRONTEND noninteractive
